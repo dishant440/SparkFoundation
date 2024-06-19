@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
 const ConnectToDB = async () => {
-    await mongoose.connect('your_mongodb_connection_string', { useNewUrlParser: true, useUnifiedTopology: true })
+    await mongoose.connect('mongodb+srv://dishant44:dishant44@cluster0.mmsbibb.mongodb.net/Banking')
         .then(() => {
             console.log("Connected to MongoDB");
         })
