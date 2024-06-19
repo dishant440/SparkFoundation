@@ -12,6 +12,7 @@ router.post("/transfer", async (req, res) => {
     session.startTransaction();
 
     const senderEmail = req.body.sender;
+   
     const receiverEmail = req.body.receiver;
     const amount = req.body.amount;
 
