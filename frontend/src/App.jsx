@@ -1,14 +1,13 @@
-import './App.css';
-import Dashboard from './pages/Dashboard'
-
+import "./App.css";
+import Dashboard from "./pages/Dashboard";
+import Customer from "./pages/Customer";
 function App() {
- 
-
   return (
     <>
-      <Dashboard/>     
+      <Dashboard />
+      <Customer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
