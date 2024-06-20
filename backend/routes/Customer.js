@@ -3,7 +3,6 @@ const router = express.Router();
 const { Customer, TransferTable } = require("../database/db");
 const mongoose = require("mongoose");
 
-
 router.post("/transfer", async (req, res) => {
   let session;
 
@@ -12,7 +11,7 @@ router.post("/transfer", async (req, res) => {
     session.startTransaction();
 
     const senderEmail = req.body.sender;
-   
+
     const receiverEmail = req.body.receiver;
     const amount = req.body.amount;
 
@@ -77,13 +76,9 @@ router.post("/transfer", async (req, res) => {
 router.get("/allCustomer", async (req, res) => {
   try {
     const users = await Customer.find({});
+   
     res.json({
-      users: users.map((user) => ({
-        email: user.email,
-        name: user.name,
-        id: user._id,
-        balance: user.balance,
-      })),
+      users,
     });
   } catch (error) {
     console.error(error);
