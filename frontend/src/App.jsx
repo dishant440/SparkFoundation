@@ -1,11 +1,20 @@
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Info from "./pages/Info";
+
 import Dashboard from "./pages/Dashboard";
+import Transfer from "./pages/Transfer";
 function App() {
   return (
-
-      <Dashboard />
-     
-   
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/Info" element={<Info />} />
+          <Route path="/transferhistory" element={<Transfer />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
