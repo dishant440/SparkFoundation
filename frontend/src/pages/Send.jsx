@@ -1,13 +1,26 @@
 import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
+import { useSendMoney } from "../hooks";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 
 export default function Send() {
   const [sender, SetSender] = useState("");
   const [receiver, SetReceiver] = useState("");
   const [amount, SetAmount] = useState("");
+  const {loading,error, sendMoney} = useSendMoney();
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    try {
+        const response = await sendMoney(sender, receiver,amount);
+        navigate('/success')
+    } catch (error) {
+        
+    }
+
     
   };
 
@@ -41,7 +54,8 @@ export default function Send() {
           />
           <Button
             classname="w-full bg-blue-600 mt-4 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
-            text="Send"
+            text={loading?"Sending.." : "Send Money"}
+            onSubmit={handleSubmit}
           />
         </form>
       </div>

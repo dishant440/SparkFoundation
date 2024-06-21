@@ -4,6 +4,7 @@ import Info from "./pages/Info";
 import Dashboard from "./pages/Dashboard";
 import Transfer from "./pages/Transfer";
 import Send from "./pages/Send";
+import Success from "./pages/Success";
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/Info/:id" element={<Info />} />
           <Route path="/transferhistory" element={<Transfer />} />
           <Route path="/sendMoney" element={<Send />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </BrowserRouter>
     </>

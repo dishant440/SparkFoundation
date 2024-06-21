@@ -13,9 +13,8 @@ export const useFetchCustomer = () => {
           "http://localhost:8080/api/user/allCustomer"
         );
         setCustomerData(response.data.users);
-        
       } catch (error) {
-        setError(error.message);
+        setError("something went wrong");
       } finally {
         setLoading(false);
       }
@@ -25,7 +24,6 @@ export const useFetchCustomer = () => {
   return { loading, customerData, error };
 };
 
-
 export const useFetchInfo = (id) => {
   const [info, setInfo] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -33,18 +31,15 @@ export const useFetchInfo = (id) => {
 
   useEffect(() => {
     const fetchInfo = async () => {
-      // console.log('Fetching info for ID:', id); // Log the ID being fetched
       setLoading(true);
       try {
         const response = await axios.get(
           `http://localhost:8080/api/user/${id}`
         );
-        // console.log('API response:', response); // Log the full response
+
         setInfo(response.data.user);
-        // console.log('User info set to:', response.data.user); // Log the user info being set
       } catch (error) {
-        // console.error('Error fetching info:', error); // Log any errors
-        setError('Unable to get info');
+        setError("Unable to get info");
       } finally {
         setLoading(false);
       }
@@ -53,9 +48,34 @@ export const useFetchInfo = (id) => {
     if (id) {
       fetchInfo();
     } else {
-      console.warn('No ID provided'); // Warn if no ID is provided
+      console.warn("No ID provided"); // Warn if no ID is provided
     }
   }, [id]);
 
   return { loading, info, error };
+};
+
+
+export const useSendMoney = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const sendMoney = async (sender, receiver, amount) => {
+    try {
+      setLoading(true);
+      const response = await axios.post('http://localhost:8080/api/user/transfer', {
+        sender,
+        receiver,
+        amount,
+      });
+      return response.data;  // Correct way to access response data with axios
+    } catch (err) {
+      setError('Error sending money');
+      throw err;  // Optionally rethrow the error if needed
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { sendMoney, loading, error };
 };
