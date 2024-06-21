@@ -13,6 +13,7 @@ export const useFetchCustomer = () => {
           "http://localhost:8080/api/user/allCustomer"
         );
         setCustomerData(response.data.users);
+        
       } catch (error) {
         setError(error.message);
       } finally {
@@ -21,6 +22,7 @@ export const useFetchCustomer = () => {
     };
     fetchCustomer();
   }, []);
+  // console.log(customerData);
   return { loading, customerData, error };
 };
 

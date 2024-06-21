@@ -1,20 +1,14 @@
-import React from 'react'
-import Button from './Button'
+import React from 'react';
+import Button from './Button';
 
-export default function AllAccount({number, name, email}) {
+export default function AllAccount({ number, name, email, onClick }) {
   return (
-    <div className="bg-white shadow-md w-full h-12 p-2 mt-2" >
-        <div className="flex flex-row gap-x-10 justify-between font-semibold ">
-          
-                <span>{number}</span>
-                <span>{name}</span>
-                <span>{email}</span>
-                <Button 
-                classname = "bg-red-500 px-4 py-1"
-                text="Send"
-                />
-
-        </div>
+    <div className="bg-white shadow-md w-full h-12 p-2 mt-2" onClick={onClick}>
+      <div className="flex flex-row gap-x-10 justify-between font-semibold items-center">
+        <span className="ml-2">{number}</span>
+        <span className="flex-1 text-center">{name}</span>
+        <span className="flex-1 text-center">{email}</span>
+      </div>
     </div>
-  )
+  );
 }
