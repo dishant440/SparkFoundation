@@ -22,7 +22,6 @@ export const useFetchCustomer = () => {
     };
     fetchCustomer();
   }, []);
-  // console.log(customerData);
   return { loading, customerData, error };
 };
 

@@ -12,8 +12,6 @@ export default function Customer() {
   const handleInfo = (id) => {
     navigate(`/Info/${id}`);
   };
-  console.log("customer data \n");
-    console.log(customerData);
 
   return (
     <div>
