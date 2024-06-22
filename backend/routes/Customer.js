@@ -19,11 +19,18 @@ router.post("/transfer", async (req, res) => {
       email: senderEmail,
     }).session(session);
 
-    if (!SenderAccount || SenderAccount.balance < amount) {
+    if (!SenderAccount) {
       await session.abortTransaction();
       return res.status(400).json({
-        message: "Insufficient balance or invalid sender account",
+        message: "Invalid sender account",
       });
+    }
+    if (SenderAccount.balance < amount) {
+      await session.abortTransaction();
+      return res.status(400).json({
+        message:"Insufficient balance"
+      })
+      
     }
 
     const ReceiverAccount = await Customer.findOne({
@@ -90,10 +97,10 @@ router.get("/history", async (req, res) => {
     const transferHistory = await TransferTable.aggregate([
       {
         $lookup: {
-          from: "customers", 
-          localField: "fromId", 
-          foreignField: "_id", 
-          as: "fromCustomer", 
+          from: "customers",
+          localField: "fromId",
+          foreignField: "_id",
+          as: "fromCustomer",
         },
       },
       {
@@ -132,14 +139,14 @@ router.get("/:id", async (req, res) => {
 
   try {
     const user = await Customer.findById({ _id: Id });
-    res.json({ 
-      user
-    })
-    return
+    res.json({
+      user,
+    });
+    return;
   } catch (error) {
     res.json({
-      error:"invalid user"
-    })
+      error: "invalid user",
+    });
   }
 });
 module.exports = router;
