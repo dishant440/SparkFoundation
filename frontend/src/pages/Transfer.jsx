@@ -33,16 +33,18 @@ export default function TransferHistory() {
   }
 
   return (
-    <div className="max-h-96 overflow-y-auto mx-auto shadow-lg w-3/4 mt-4">
+  
+      <>
         <div className="flex justify-center mt-10 mb-5 font-bold text-3xl">
             <h1>Transactions</h1>
         </div>
-      <table className="min-w-full bg-white">
+      <div className="max-h-96 overflow-y-auto  mx-auto shadow-lg w-3/4 mt-4">
+      <table className="min-w-full bg-white ">
         <thead className="bg-gray-200 sticky top-0 z-10">
           <tr>
             <th className="py-2 px-4 border-b border-gray-300">Debited</th>
             <th className="py-2 px-4 border-b border-gray-300">Credited</th>
-            <th className="py-2 px-4 border-b border-gray-300">Amount</th>
+            <th className="py-2 px-4 border-b border-gray-300">Amount (Rs)</th>
             <th className="py-2 px-4 border-b border-gray-300">Date</th>
           </tr>
         </thead>
@@ -58,5 +60,6 @@ export default function TransferHistory() {
         </tbody>
       </table>
     </div>
+      </>
   );
 }

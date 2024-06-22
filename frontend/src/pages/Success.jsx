@@ -15,8 +15,8 @@ export default function Success() {
         <h2 className="text-2xl font-bold mb-4">Success!</h2>
         <p className="mb-4">Money was transferred successfully.</p>
         <Button
-          className="bg-blue-500 mt-2 p-1"
-          text="Back to Dashboard"
+          classname="bg-blue-500 mt-2 p-1"
+          text={"Back to Dashboard"}
           onClick={handleBackToDashboard}
         />
       </div>

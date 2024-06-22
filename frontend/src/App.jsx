@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Transfer from "./pages/Transfer";
 import Send from "./pages/Send";
 import Success from "./pages/Success";
+import Error from "./pages/Error";
 function App() {
   return (
     <>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/transferhistory" element={<Transfer />} />
           <Route path="/sendMoney" element={<Send />} />
           <Route path="/success" element={<Success />} />
+          <Route path="/error" element={<Error />} />
         </Routes>
       </BrowserRouter>
     </>

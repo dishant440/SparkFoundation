@@ -55,7 +55,6 @@ export const useFetchInfo = (id) => {
   return { loading, info, error };
 };
 
-
 export const useSendMoney = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -63,15 +62,24 @@ export const useSendMoney = () => {
   const sendMoney = async (sender, receiver, amount) => {
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:8080/api/user/transfer', {
-        sender,
-        receiver,
-        amount,
-      });
-      return response.data;  // Correct way to access response data with axios
+      const response = await axios.post(
+        "http://localhost:8080/api/user/transfer",
+        {
+          sender,
+          receiver,
+          amount,
+        }
+      );
+
+      console.log(response.data);
+      return response.data;
     } catch (err) {
-      setError('Error sending money');
-      throw err;  // Optionally rethrow the error if needed
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("Error sending money");
+      }
+      throw err;
     } finally {
       setLoading(false);
     }
