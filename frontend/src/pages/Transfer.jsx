@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loading from '../components/Loading'; 
 import Error from '../components/Error'; 
+import Button from '../components/Button';
+import { useNavigate } from "react-router-dom";
+
 
 export default function TransferHistory() {
   const [transferData, setTransferData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTransferData = async () => {
@@ -35,6 +39,11 @@ export default function TransferHistory() {
   return (
   
       <>
+      <Button
+      text="Dashboard"
+      classname="bg-blue-600 mt-4 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
+      onClick={()=>navigate("/dashboard")}
+      />
         <div className="flex justify-center mt-10 mb-5 font-bold text-3xl">
             <h1>Transactions</h1>
         </div>
