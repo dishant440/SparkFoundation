@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+const backend_url = process.env.React_App_URL;
+
+
 export const useFetchCustomer = () => {
   const [customerData, setCustomerData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -10,7 +13,7 @@ export const useFetchCustomer = () => {
     const fetchCustomer = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/user/allCustomer"
+          `${backend_url}api/user/allCustomer`
         );
         setCustomerData(response.data.users);
       } catch (error) {
@@ -34,7 +37,7 @@ export const useFetchInfo = (id) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/user/${id}`
+          `${backend_url}api/user/${id}`
         );
 
         setInfo(response.data.user);
@@ -63,7 +66,7 @@ export const useSendMoney = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:8080/api/user/transfer",
+        `${backend_url}/api/user/transfer`,
         {
           sender,
           receiver,
@@ -71,7 +74,6 @@ export const useSendMoney = () => {
         }
       );
 
-      console.log(response.data);
       return response.data;
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {

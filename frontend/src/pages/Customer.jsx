@@ -6,10 +6,11 @@ import Button from "../components/Button";
 import { useFetchCustomer } from "../hooks/index";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Customer() {
   const { customerData, error, loading } = useFetchCustomer();
   const navigate = useNavigate();
-  
+
   const handleInfo = (id) => {
     navigate(`/Info/${id}`);
   };
