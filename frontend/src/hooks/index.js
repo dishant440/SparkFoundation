@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const backend_url = process.env.React_App_URL;
-
+const backend_url = "http://localhost:8080";
 
 export const useFetchCustomer = () => {
   const [customerData, setCustomerData] = useState([]);
@@ -13,7 +12,7 @@ export const useFetchCustomer = () => {
     const fetchCustomer = async () => {
       try {
         const response = await axios.get(
-          `${backend_url}api/user/allCustomer`
+          `${backend_url}/api/user/allCustomer`
         );
         setCustomerData(response.data.users);
       } catch (error) {
@@ -37,7 +36,7 @@ export const useFetchInfo = (id) => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `${backend_url}api/user/${id}`
+          `${backend_url}/api/user/${id}`
         );
 
         setInfo(response.data.user);

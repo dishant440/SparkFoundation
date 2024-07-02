@@ -3,9 +3,8 @@ const {ConnectToDB} = require('./database/db')
 const rootRouter = require('./routes/index')
 const app = express();
 const cors = require('cors')
-require('dotenv').config();
 
-const mongoDBUri = process.env.MONGODB_URI;
+const mongoDBUri = "mongodb+srv://dishant44:dishant44@cluster0.mmsbibb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 console.log(mongoDBUri);
 
 

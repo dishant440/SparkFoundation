@@ -6,7 +6,7 @@ export default function Success() {
   const navigate = useNavigate();
 
   const handleBackToDashboard = () => {
-    navigate("/dashboard");
+    navigate("/");
   };
 
   return (

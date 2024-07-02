@@ -5,6 +5,7 @@ import Error from '../components/Error';
 import Button from '../components/Button';
 import { useNavigate } from "react-router-dom";
 
+const backendurl = "http://localhost:8080"
 
 export default function TransferHistory() {
   const [transferData, setTransferData] = useState([]);
@@ -15,7 +16,7 @@ export default function TransferHistory() {
   useEffect(() => {
     const fetchTransferData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/user/history');
+        const response = await axios.get(`${backendurl}/api/user/history`);
         setTransferData(response.data.transferHistory);
       } catch (error) {
         setError(error.message);
@@ -42,7 +43,7 @@ export default function TransferHistory() {
       <Button
       text="Dashboard"
       classname="bg-blue-600 mt-4 text-white py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 "
-      onClick={()=>navigate("/dashboard")}
+      onClick={()=>navigate("/")}
       />
         <div className="flex justify-center mt-10 mb-5 font-bold text-3xl">
             <h1>Transactions</h1>
