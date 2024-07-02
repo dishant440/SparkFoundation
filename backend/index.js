@@ -4,7 +4,7 @@ const rootRouter = require('./routes/index')
 const app = express();
 const cors = require('cors')
 
-const mongoDBUri = "mongodb+srv://dishant44:dishant44@cluster0.mmsbibb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongoDBUri = process.env.DATABASE_URL;
 console.log(mongoDBUri);
 
 
