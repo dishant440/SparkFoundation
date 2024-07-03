@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-const backend_url = "http://localhost:8080";
+import { BASE_URL } from "../../services/connect";
+const backend_url = BASE_URL;
 
 export const useFetchCustomer = () => {
   const [customerData, setCustomerData] = useState([]);

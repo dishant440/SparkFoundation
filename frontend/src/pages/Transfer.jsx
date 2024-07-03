@@ -4,8 +4,10 @@ import Loading from '../components/Loading';
 import Error from '../components/Error'; 
 import Button from '../components/Button';
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from '../../services/connect';
 
-const backendurl = "http://localhost:8080"
+
+const backendurl = BASE_URL
 
 export default function TransferHistory() {
   const [transferData, setTransferData] = useState([]);
