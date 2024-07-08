@@ -26,8 +26,10 @@ export default function Customer() {
         <h2 className="text-2xl font-bold mt-2">Customer</h2>
         <div className="mt-4 overflow-y-auto max-h-[300px] w-full px-4 m-2 shadow-inner">
           {loading && (
+           
             <div>
-              <Loading />
+              
+              <Loading text="Loading..." />
             </div>
           )}
           {error && (

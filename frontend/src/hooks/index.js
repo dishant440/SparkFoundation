@@ -10,6 +10,8 @@ export const useFetchCustomer = () => {
 
   useEffect(() => {
     const fetchCustomer = async () => {
+      setLoading(true)
+
       try {
         const response = await axios.get(
           `${backend_url}/api/user/allCustomer`
