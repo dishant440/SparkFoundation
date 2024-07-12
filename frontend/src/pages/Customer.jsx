@@ -44,6 +44,7 @@ export default function Customer() {
               number={index + 1}
               name={customer.name}
               email={customer.email}
+              balance={customer.balance}
               onClick={() => handleInfo(customer._id)}
             />
           ))}
